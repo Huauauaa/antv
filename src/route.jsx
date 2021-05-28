@@ -20,7 +20,7 @@ export const routers = [
   {
     path: '/g2',
     name: 'g2',
-    component: loadable(() => import('./g2/Home')),
+    // component: loadable(() => import('./g2/Home')),
     children: [
       {
         path: '/g2/chart',
@@ -43,7 +43,7 @@ export function renderRouters(routers) {
     <Switch>
       {routers.map((router, index) => (
         <Route path={router.path} exact={router.exact} key={index}>
-          <router.component />
+          {router.component && <router.component />}
           {renderRouters(router.children || [])}
         </Route>
       ))}

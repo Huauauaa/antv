@@ -7,6 +7,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@antv/data-set": "^0.11.8",
+    "@antv/g2": "^4.1.17",
     "@antv/x6": "^1.22.0",
     "@loadable/component": "^5.15.0",
     "react": "^17.0.0",

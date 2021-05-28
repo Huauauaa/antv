@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import Example from './x6/Example';
+import { renderRouters } from './route';
 
 function App() {
-  return <Example></Example>;
+  return renderRouters();
 }
 
 export default App;

@@ -2,3 +2,14 @@ li {
   display: inline;
   margin-right: 10px;
 }
+
+li a {
+  text-decoration: none;
+}
+
+li.active > a {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+}

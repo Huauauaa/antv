@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
-import X6 from './x6/Example';
+import loadable from '@loadable/component';
 
-const routers = [
+export const routers = [
   {
     path: '/',
     exact: true,
@@ -15,32 +15,38 @@ const routers = [
     path: '/x6',
     exact: true,
     name: 'x6',
-    component: X6,
+    component: loadable(() => import('./x6/Example')),
+  },
+  {
+    path: '/g2',
+    name: 'g2',
+    component: loadable(() => import('./g2/Home')),
+    children: [
+      {
+        path: '/g2/chart',
+        exact: true,
+        name: 'chart',
+        component: loadable(() => import('./g2/Chart')),
+      },
+      {
+        path: '/g2/chart1',
+        exact: true,
+        name: 'chart1',
+        component: loadable(() => import('./g2/Chart1')),
+      },
+    ],
   },
 ];
 
-export function renderRouters() {
+export function renderRouters(routers) {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            {routers.map((router, index) => (
-              <li key={index}>
-                <Link to={router.path}>{router.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <Switch>
-          {routers.map((router, index) => (
-            <Route path={router.path} exact={router.exact} key={index}>
-              <router.component />
-            </Route>
-          ))}
-        </Switch>
-      </div>
-    </Router>
+    <Switch>
+      {routers.map((router, index) => (
+        <Route path={router.path} exact={router.exact} key={index}>
+          <router.component />
+          {renderRouters(router.children || [])}
+        </Route>
+      ))}
+    </Switch>
   );
 }

@@ -9,5 +9,5 @@ jobs:
           node-version: '12'
       - name: install
         run: |
-          npm run install
+          ls
   

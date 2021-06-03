@@ -4,10 +4,10 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          npm run build
-          cd dist
-          git init
-          git add -A
-          git commit -m 'deploy'
-          git push -f git@github.com:Huauauaa/antv.git master:gh-pages
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - name: install
+        run: |
+          npm run install
+  

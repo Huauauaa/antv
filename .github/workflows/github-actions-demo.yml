@@ -8,6 +8,5 @@ jobs:
         with:
           node-version: '12'
       - name: install
-        run: |
-          ls
+        run: npm run build
   

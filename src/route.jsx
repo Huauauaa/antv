@@ -34,6 +34,12 @@ export const routers = [
         name: 'chart1',
         component: loadable(() => import('./g2/Chart1')),
       },
+      {
+        path: '/g2/mirror',
+        exact: true,
+        name: 'mirror',
+        component: loadable(() => import('./g2/Mirror')),
+      },
     ],
   },
 ];
